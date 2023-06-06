@@ -6,11 +6,11 @@
             "request": "launch",
             "type": "al",
             "environmentType": "OnPrem",
-            "server": "http://localhost:8080/TEST/",
-            "serverInstance": "TEST",
+            "server": "http://localhost:8080/BC190/",
+            "serverInstance": "BC190",
             "authentication": "Windows",
-            "port": 5054,
-            "startupObjectId":50138,
+            "port": 7049,
+            "startupObjectId":50131,
             "startupObjectType": "Page",
             "breakOnError": "All",
             "launchBrowser": true,
@@ -18,11 +18,37 @@
             "enableSqlInformationDebugger": true,
             "tenant": "default",
             "usePublicURLFromServer": true,
-            //"schemaUpdateMode": "ForceSync",
-        
-           
-            
-                     
-        }
+           // "schemaUpdateMode": "Recreate",          
+        },
+    //     {
+    //     "name": "Daisy Debug",
+
+    //     "type": "al",
+
+    //     "request": "attach",
+
+    //     "server": "http://localhost:8080/BC190/",
+
+    //     "port": 7049,
+
+    //     "serverInstance": "BC190",
+
+    //     "authentication": "Windows",
+
+    //     "breakOnError": true,
+
+    //     "breakOnRecordWrite": false,
+
+    //     "enableSqlInformationDebugger": true,
+
+    //     "enableLongRunningSqlStatements": true,
+
+    //     "longRunningSqlStatementsThreshold": 500,
+
+    //     "numberOfSqlStatements": 10,
+
+    //     "breakOnNext": "WebClient"
+
+    // }
     ]
 }

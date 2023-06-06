@@ -12,8 +12,8 @@ tableextension 50130 "Registered Students" extends Customer
         {
             Caption = 'Date of Birth';
             DataClassification = CustomerContent;
-    }
-     field(3002; Age; Integer)
+        }
+        field(3002; Age; Integer)
         {
             Caption = 'Age';
             Editable = false;
@@ -57,5 +57,11 @@ tableextension 50130 "Registered Students" extends Customer
             DataClassification = CustomerContent;
 
         }
+        field(3009; "Customer Type"; option)
+        {
+            OptionMembers = Students,Customers;
+            OptionCaption = 'Students, Customers';
+            DataClassification = CustomerContent;
+        }
     }
-    }
+}

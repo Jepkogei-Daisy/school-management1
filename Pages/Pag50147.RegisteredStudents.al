@@ -2,6 +2,7 @@ page 50147 "Registered Students"
 {
     Caption = 'Registered Students';
     PageType = Card;
+    CardPageID = "Customer Card";
     PromotedActionCategories = 'New,Process,Report,New Document,Approve,Request Approval,Prices & Discounts,Navigate,Customer';
     RefreshOnActivate = true;
     SourceTable = Customer;
@@ -59,22 +60,11 @@ page 50147 "Registered Students"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Age field.';
                 }
-                field("IC Partner Code"; Rec."IC Partner Code")
-                {
-                    ApplicationArea = Intercompany;
-                    Importance = Additional;
-                    ToolTip = 'Specifies the customer''s intercompany partner code.';
-                }
                 field("Balance (LCY)"; Rec."Balance (LCY)")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the payment amount that the customer owes for completed sales. This value is also known as the customer''s balance.';
                     Caption = 'Fee Balance';
-                }
-                field("Balance Due (LCY)"; Rec."Balance Due (LCY)")
-                {
-                    ApplicationArea = Basic, Suite;
-                    ToolTip = 'Specifies payments from the customer that are overdue per today''s date.';
                 }
             }
             group("Address & Contact")
@@ -87,11 +77,6 @@ page 50147 "Registered Students"
                     {
                         ApplicationArea = Basic, Suite;
                         ToolTip = 'Specifies the customer''s address. This address will appear on all sales documents for the customer.';
-                    }
-                    field("Address 2"; Rec."Address 2")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        ToolTip = 'Specifies additional address information.';
                     }
                     field("Country/Region Code"; Rec."Country/Region Code")
                     {
@@ -186,16 +171,6 @@ page 50147 "Registered Students"
                     ShowMandatory = true;
                     ToolTip = 'Specifies the tax area that is used to calculate and post sales tax.';
                 }
-                field("Tax Identification Type"; Rec."Tax Identification Type")
-                {
-                    ApplicationArea = SalesTax, BasicMX;
-                    ToolTip = 'Specifies the tax identification type for the customer. This information is used for tax reporting. The identification type used for a customer depends on whether the customer is classified as a company or as a person.';
-                }
-                field("Tax Exemption No."; Rec."Tax Exemption No.")
-                {
-                    ApplicationArea = SalesTax;
-                    ToolTip = 'Specifies the customer''s tax exemption number. If the customer has been registered exempt for sales and use tax this number would have been assigned by the taxing authority.';
-                }
                 group(PostingDetails)
                 {
                     Caption = 'Posting Details';
@@ -211,7 +186,6 @@ page 50147 "Registered Students"
                         ApplicationArea = Basic, Suite;
                         Importance = Additional;
                         ToolTip = 'Specifies the customer''s VAT specification to link transactions made for this customer to.';
-                        Visible = UseVAT;
                     }
                     field("Customer Posting Group"; Rec."Customer Posting Group")
                     {
@@ -354,67 +328,126 @@ page 50147 "Registered Students"
         CRMIntegrationManagement: Codeunit "CRM Integration Management";
         CustomerMgt: Codeunit "Customer Mgt.";
         FormatAddress: Codeunit "Format Address";
+
+    var
+
+        Customer: Record Customer;
+
+        //CustReport: Report "Fee Statement";
+
         StyleTxt: Text;
+
         [InDataSet]
+
         ContactEditable: Boolean;
+
         CRMIntegrationEnabled: Boolean;
+
         CDSIntegrationEnabled: Boolean;
+
         BlockedFilterApplied: Boolean;
+
         ExtendedPriceEnabled: Boolean;
+
         CRMIsCoupledToRecord: Boolean;
+
         OpenApprovalEntriesExistCurrUser: Boolean;
+
         OpenApprovalEntriesExist: Boolean;
+
         ShowWorkflowStatus: Boolean;
+
         NoFieldVisible: Boolean;
+
         BalanceExhausted: Boolean;
+
         AttentionToPaidDay: Boolean;
+
         Totals: Decimal;
+
         AmountOnPostedInvoices: Decimal;
+
         AmountOnPostedCrMemos: Decimal;
+
         AmountOnOutstandingInvoices: Decimal;
+
         AmountOnOutstandingCrMemos: Decimal;
+
         AdjmtCostLCY: Decimal;
+
         AdjCustProfit: Decimal;
+
         CustProfit: Decimal;
+
         AdjProfitPct: Decimal;
+
         CustInvDiscAmountLCY: Decimal;
+
         CustPaymentsLCY: Decimal;
+
         CustSalesLCY: Decimal;
+
         OverdueBalance: Decimal;
+
         OverduePaymentsMsg: Label 'Overdue Payments';
+
         DaysPastDueDate: Decimal;
+
         PostedInvoicesMsg: Label 'Posted Invoices (%1)', Comment = 'Invoices (5)';
+
         CreditMemosMsg: Label 'Posted Credit Memos (%1)', Comment = 'Credit Memos (3)';
+
         OutstandingInvoicesMsg: Label 'Ongoing Invoices (%1)', Comment = 'Ongoing Invoices (4)';
+
         OutstandingCrMemosMsg: Label 'Ongoing Credit Memos (%1)', Comment = 'Ongoing Credit Memos (4)';
+
         ShowMapLbl: Label 'Show on Map';
+
         CustomerCardServiceCategoryTxt: Label 'Customer Card', Locked = true;
+
         PageBckGrndTaskStartedTxt: Label 'Page Background Task to calculate customer statistics for customer %1 started.', Locked = true, Comment = '%1 = Customer No.';
+
         PageBckGrndTaskCompletedTxt: Label 'Page Background Task to calculate customer statistics completed successfully.', Locked = true;
+
         ExpectedMoneyOwed: Decimal;
+
         TotalMoneyOwed: Decimal;
+
         AvgDaysToPay: Decimal;
+
         FoundationOnly: Boolean;
+
         CanCancelApprovalForRecord: Boolean;
-        UseVAT: Boolean;
+
         EnabledApprovalWorkflowsExist: Boolean;
+
         AnyWorkflowExists: Boolean;
+
         NewMode: Boolean;
+
         WorkFlowEventFilter: Text;
+
         CaptionTxt: Text;
+
         CanRequestApprovalForFlow: Boolean;
+
         CanCancelApprovalForFlow: Boolean;
+
         IsSaaS: Boolean;
+
         IsCountyVisible: Boolean;
+
         [InDataSet]
+
         ItemReferenceVisible: Boolean;
+
         StatementFileNameTxt: Label 'Statement', Comment = 'Shortened form of ''Customer Statement''';
+
         LoadOnDemand: Boolean;
+
         PrevCountryCode: Code[10];
+
         BackgroundTaskId: Integer;
+
         EmailImprovementFeatureEnabled: Boolean;
-
 }
-
-
-

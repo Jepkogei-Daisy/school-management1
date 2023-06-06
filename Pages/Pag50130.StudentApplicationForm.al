@@ -197,6 +197,23 @@ page 50130 "Student Application Form"
 
                     end;
                 }
+                action(Released)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Release';
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    Image = Customer;
+                    ToolTip = 'Opens Student Application Form';
+
+
+                    trigger OnAction()
+                    begin
+
+
+                    end;
+                }
             }
         }
     }
@@ -220,6 +237,7 @@ page 50130 "Student Application Form"
         CanCancelApprovalForFlow: Boolean;
         CanSendApprovalForFlow: Boolean;
         ApproveMagt: Codeunit "Approvals Mgmt.";
+        DocumentRelease: Codeunit "Document Release";
 
 
 

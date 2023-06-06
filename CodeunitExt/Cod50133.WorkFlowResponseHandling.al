@@ -5,14 +5,21 @@ codeunit 50133 "WorkFlowResponseHandling"
     local procedure OnOpenDocument(RecRef: RecordRef; var Handled: Boolean)
     var
         Applicant: Record "Student Application Form";
+        DocumentRelease: Codeunit "Document Release";
+        Varvariant: variant;
     begin
+        Varvariant := RecRef;
         case RecRef.number of
             DATABASE::"Student Application Form":
                 begin
-                    RecRef.SetTable(Applicant);
-                    Applicant."Approval Status" := Applicant."Approval Status"::Open;
-                    Applicant.Modify;
+                    // RecRef.SetTable(Applicant);
+                    // Applicant."Approval Status" := Applicant."Approval Status"::Open;
+                    // Applicant.Modify;
+                    // Handled := true;
+                    // //DocumentRelease:=
+                    Applicant.SetView(RecRef.GetView());
                     Handled := true;
+                    DocumentRelease.StudentRegApproved(Varvariant);
                 end;
         end;
     end;
@@ -21,30 +28,21 @@ codeunit 50133 "WorkFlowResponseHandling"
     local procedure OnReleaseDocument(RecRef: RecordRef; var Handled: Boolean)
     var
         Applicant: Record "Student Application Form";
-    begin
-        case RecRef.number of
-            DATABASE::"Student Application Form":
-                begin
-                    RecRef.SetTable(Applicant);
-                    Applicant."Approval Status" := Applicant."Approval Status"::Approved;
-                    Applicant.Modify;
-                    Handled := true;
-                end;
-        end;
-    end;
+        documentRelease: Codeunit "Document Release";
+        Varvariant: variant;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Approvals Mgmt.", 'OnSetStatusToPendingApproval', '', true, true)]
-    local procedure OnSetStatusToPendingApproval(RecRef: RecordRef; var Variant: Variant; var IsHandled: Boolean)
-    var
-        Applicant: Record "Student Application Form";
     begin
+        Varvariant := RecRef;
         case RecRef.number of
             DATABASE::"Student Application Form":
                 begin
-                    RecRef.SetTable(Applicant);
-                    Applicant."Approval Status" := Applicant."Approval Status"::"Pending Approval";
-                    Applicant.Modify;
-                    IsHandled := true;
+                    // RecRef.SetTable(Applicant);
+                    // Applicant."Approval Status" := Applicant."Approval Status"::Approved;
+                    // Applicant.Modify;
+                    // Handled := true;
+                    Applicant.SetView(RecRef.GetView());
+                    Handled := true;
+                    documentRelease.StudentRegApproved(Varvariant);
                 end;
         end;
     end;
@@ -70,7 +68,13 @@ codeunit 50133 "WorkFlowResponseHandling"
 
             WorkFlowResponseHandling.OpenDocumentCode:
                 WorkFlowResponseHandling.AddResponsePredecessor(WorkFlowResponseHandling.OpenDocumentCode,
-                WorkFlowEventHandlingCust.RunWorkFlowOnCancelStudentApplicationFormApprovalCode);
+                WorkFlowEventHandlingCust.RunWorkFlowOnRejectedStudentApplicationFormApprovalCode);
+
+            WorkFlowResponseHandling.CreateApprovalRequestsCode:
+                WorkFlowResponseHandling.AddResponsePredecessor(WorkFlowResponseHandling.CreateApprovalRequestsCode,
+                WorkFlowEventHandlingCust.RunWorkFlowOnSendStudentApplicationFormForApprovalCode);
+
         end;
     end;
+
 }

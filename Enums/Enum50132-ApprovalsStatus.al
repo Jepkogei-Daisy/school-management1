@@ -9,4 +9,5 @@ enum 50132 "ApprovalStatus"
     value(2; "Rejected") { Caption = 'Rejected'; }
     value(3; "Approved") { Caption = 'Approved'; }
     value(4; "Pending Approval") { Caption = 'Pending Approval '; }
+    value(5; "Released") { Caption = 'Released'; }
 }

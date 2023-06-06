@@ -47,34 +47,30 @@ page 50131 "Student Role Center"
                     Caption = 'Management Setup';
 
                 }
-                action(Admin1)
+            }
+            group(Section2)
+            {
+
+                Caption = 'COURSES';
+
+                action(Admin2)
                 {
+                    RunObject = page "courses";
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Courses';
 
-                    //     ApplicationArea = Basic, Suite;
-                    //     Caption = 'Grading System';
-                    //     RunObject = page "Student Grade";
-
-                    // }
-
-                    // }
-                    // group(Section2)
-                    // {
-                    //     Caption = 'APPLICANTS';
-                    //     action(lists)
-                    //     {
-                    //         RunObject = page "StudentApplicationList";
-                    //         ApplicationArea = Basic, Suite;
-                    //         Caption = 'Applicants List';
-
-                    //     }
-
-                    // }
                 }
+
+
+
+
             }
         }
-
     }
 }
+
+
+
 
 profile Student
 {

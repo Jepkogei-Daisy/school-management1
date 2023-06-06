@@ -76,13 +76,13 @@ table 50130 "Student Application Form"
             Caption = 'Telephone';
             DataClassification = CustomerContent;
         }
-        field(8; Gender; Enum StudentGender)
+        field(3000; Gender; Enum StudentGender)
         {
             Caption = 'Gender';
             DataClassification = CustomerContent;
 
         }
-        field(9; "Date of Birth"; Date)
+        field(3001; "Date of Birth"; Date)
         {
             Caption = 'Date of Birth';
             DataClassification = CustomerContent;
@@ -100,7 +100,7 @@ table 50130 "Student Application Form"
 
             end;
         }
-        field(10; Age; Integer)
+        field(3002; Age; Integer)
         {
             Caption = 'Age';
             Editable = false;
@@ -111,17 +111,17 @@ table 50130 "Student Application Form"
         {
             DataClassification = CustomerContent;
         }
-        field(12; "Nationality"; Text[20])
+        field(3003; "Nationality"; Text[20])
         {
             DataClassification = CustomerContent;
             Caption = 'Nationality';
         }
-        field(13; "National ID"; Integer)
+        field(3004; "National ID"; Integer)
         {
             Caption = 'National ID';
             DataClassification = CustomerContent;
         }
-        field(14; "Level"; Code[50])
+        field(3005; "Level"; Code[50])
 
         {
             Caption = 'Level';
@@ -129,20 +129,20 @@ table 50130 "Student Application Form"
             DataClassification = CustomerContent;
             //optionMembers=Certificate,Diploma,BachelorsDegree,MastersDegree,DoctoralDegree;
         }
-        field(15; "School"; Text[50])
+        field(3006; "School"; Text[50])
         {
             Caption = 'School';
             Editable = false;
             DataClassification = CustomerContent;
         }
-        field(16; "Department"; Text[50])
+        field(3007; "Department"; Text[50])
         {
             Caption = 'Department';
             Editable = false;
             DataClassification = CustomerContent;
 
         }
-        field(17; "Course Name"; Text[50])
+        field(3008; "Course Name"; Text[50])
         {
             Caption = 'Course Name';
             TableRelation = Courses where(Level = field("Level"));

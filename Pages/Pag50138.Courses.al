@@ -27,13 +27,13 @@ page 50138 Courses
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the name in the level field';
-                    // trigger OnLookup(var Text: Text): Boolean
-                    // var
-                    //     Levels: Record LevelOfApplication;
-                    // begin
-                    //     if Page.RunModal(Page::"Level of Application", Levels) = Action::LookupOK then
-                    //         Rec."Level" := levels."Level Name";
-                    // end;
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        Levels: Record LevelOfApplication;
+                    begin
+                        if Page.RunModal(Page::"Level of Application", Levels) = Action::LookupOK then
+                            Rec."Level" := levels."Level Name";
+                    end;
                 }
                 field(School; Rec.School)
                 {

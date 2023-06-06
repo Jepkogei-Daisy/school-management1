@@ -54,9 +54,17 @@ codeunit 50132 "WorkFlowEventHandling"
         case EventFunctionName of
             RunWorkFlowOnCancelStudentApplicationFormApprovalCode:
                 WorkFlowEvent.AddEventPredecessor(RunWorkFlowOnCancelStudentApplicationFormApprovalCode, RunWorkFlowOnSendStudentApplicationFormForApprovalCode);
+
+            RunWorkFlowOnRejectedStudentApplicationFormApprovalCode:
+                workflowevent.AddEventPredecessor(RunWorkFlowOnRejectedStudentApplicationFormApprovalCode, RunWorkFlowOnSendStudentApplicationFormForApprovalCode);
+
             WorkFlowEvent.RunWorkFlowOnApproveApprovalRequestCode:
                 begin
                     WorkFlowEvent.AddEventPredecessor(WorkFlowEvent.RunWorkFlowOnApproveApprovalRequestCode, RunWorkFlowOnSendStudentApplicationFormForApprovalCode)
+                end;
+            WorkFlowEvent.RunWorkflowOnDelegateApprovalRequestCode:
+                begin
+                    WorkFlowEvent.AddEventPredecessor(WorkFlowEvent.RunWorkFlowOnDelegateApprovalRequestCode, RunWorkFlowOnSendStudentApplicationFormForApprovalCode)
                 end;
 
         end;
