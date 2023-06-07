@@ -59,10 +59,22 @@ page 50145 UnitMatrix
 
                     end;
                 }
-                field("Semester Name"; Rec."Semester Name")
+                field("Academic Year"; Rec."Academic Year")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Academic Year field.';
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        Unit: Record "Academic Years";
+                    begin
+                        if Page.RunModal(Page::"Academic Years", Unit) = Action::LookupOK then
+                            Rec."Academic Year" := Unit."Academic Year";
+                    end;
+                }
+                field("Semester Name"; Rec."Semester Name")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the semester field.';
                     trigger OnLookup(var Text: Text): Boolean
                     var
                         Unit: Record "Semesters";

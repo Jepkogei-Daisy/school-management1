@@ -36,10 +36,6 @@ codeunit 50133 "WorkFlowResponseHandling"
         case RecRef.number of
             DATABASE::"Student Application Form":
                 begin
-                    // RecRef.SetTable(Applicant);
-                    // Applicant."Approval Status" := Applicant."Approval Status"::Approved;
-                    // Applicant.Modify;
-                    // Handled := true;
                     Applicant.SetView(RecRef.GetView());
                     Handled := true;
                     documentRelease.StudentRegApproved(Varvariant);

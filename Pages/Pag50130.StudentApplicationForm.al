@@ -108,6 +108,11 @@ page 50130 "Student Application Form"
             group(CourseApplication)
             {
                 Caption = 'Course Application';
+                field("Student Category"; Rec."Student Category")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the student category in the field.';
+                }
                 field(Level; Rec.Level)
                 {
                     ApplicationArea = All;

@@ -74,6 +74,11 @@ page 50132 "StudentMgntSetup"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the level code field.';
                 }
+                field("Session Code"; Rec."Session Code")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the session code field.';
+                }
             }
         }
     }

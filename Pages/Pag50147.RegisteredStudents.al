@@ -124,7 +124,6 @@ page 50147 "Registered Students"
 
             group("Education")
             {
-
                 field(Level; Rec.Level)
                 {
                     ApplicationArea = All;
@@ -145,6 +144,12 @@ page 50147 "Registered Students"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Department field.';
                 }
+                field("Student Categoty"; Rec."Student Categoty")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Student Category field.';
+                }
+
             }
             group(Invoicing)
             {

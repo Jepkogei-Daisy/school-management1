@@ -59,9 +59,14 @@ tableextension 50130 "Registered Students" extends Customer
         }
         field(3009; "Customer Type"; option)
         {
-            OptionMembers = Students,Customers;
-            OptionCaption = 'Students, Customers';
+            OptionMembers = Customers,Students;
+            OptionCaption = 'Customers, Students';
             DataClassification = CustomerContent;
+        }
+        field(3010; "Student Categoty"; Enum "Student Category")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Student Category';
         }
     }
 }

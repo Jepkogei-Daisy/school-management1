@@ -90,6 +90,13 @@ table 50132 "StudentMgntSetup"
             Caption = 'Level Code';
             TableRelation = "No. Series";
         }
+        field(13; "Session Code"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Session Code';
+            TableRelation = "No. Series";
+
+        }
 
     }
     keys

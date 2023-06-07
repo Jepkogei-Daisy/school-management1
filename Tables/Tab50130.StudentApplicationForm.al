@@ -71,7 +71,7 @@ table 50130 "Student Application Form"
             Caption = 'E-Mail';
             DataClassification = CustomerContent;
         }
-        field(7; "Telephone"; Integer)
+        field(7; "Telephone"; Text[30])
         {
             Caption = 'Telephone';
             DataClassification = CustomerContent;
@@ -155,7 +155,7 @@ table 50130 "Student Application Form"
             DataClassification = CustomerContent;
 
         }
-        field(19; "City"; Text[20])
+        field(19; "City"; Text[30])
         {
             Caption = 'City';
             DataClassification = CustomerContent;
@@ -170,9 +170,11 @@ table 50130 "Student Application Form"
             DataClassification = CustomerContent;
             Caption = 'Approval Status';
         }
-
-
-
+        field(24; "Student Category"; Enum "Student Category")
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Student Category';
+        }
     }
     keys
     {

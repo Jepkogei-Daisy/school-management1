@@ -44,7 +44,6 @@ codeunit 50131 "Approval Mgt"
                 begin
                     recref.SetTable(Applicant);
                     ApprovalEntryArgument."Document No." := Applicant."Application No.";
-
                 end;
         end;
     end;

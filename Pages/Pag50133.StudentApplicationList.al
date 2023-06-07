@@ -6,6 +6,7 @@ page 50133 "StudentApplicationList"
     CardPageId = "Student Application Form";
     UsageCategory = Lists;
     ApplicationArea = All;
+    Editable = false;
 
     layout
     {
@@ -17,7 +18,7 @@ page 50133 "StudentApplicationList"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the the value of the application number field';
-   
+
                 }
                 field("Full Name"; Rec."Full Name")
                 {
@@ -33,6 +34,11 @@ page 50133 "StudentApplicationList"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Age field.';
+                }
+                field("Student Category"; Rec."Student Category")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the student category in the field';
                 }
             }
         }
