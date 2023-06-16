@@ -8,7 +8,7 @@ page 50149 "Session Card"
     {
         area(Content)
         {
-            group(GroupName)
+            group(General)
             {
                 field("Session Code"; Rec."Session Code")
                 {
@@ -19,6 +19,14 @@ page 50149 "Session Card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Student No. field.';
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        Session: Record "Student Application Form";
+                    begin
+                        if page.RunModal(Page::"StudentApplicationList", Session) = Action::LookupOK then
+                            Rec."Application No." := Session."Application No.";
+                        Rec."Full Name" := Session."Full Name";
+                    end;
                 }
                 field("Full Name"; Rec."Full Name")
                 {
@@ -29,11 +37,43 @@ page 50149 "Session Card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Academic Year field.';
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        Session: Record "Academic Years";
+                    begin
+
+                        if Page.RunModal(Page::"Academic Years", Session) = Action::LookupOK then
+                            Rec."Academic Year" := Session."Academic Year";
+                    end;
                 }
                 field("Semester Name"; Rec."Semester Name")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Semester Name field.';
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        Session: Record Semesters;
+                    begin
+
+                        if Page.RunModal(Page::Semesters, Session) = Action::LookupOK then
+                            Rec."Semester Name" := Session."Semester Name";
+                    end;
+                }
+                field("Course Name"; Rec."Course Name")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the Name of the course in the field';
+                    trigger OnLookup(var Text: Text): Boolean
+                    var
+                        course: Record Courses;
+                    begin
+                        course.Reset;
+                        if Page.RunModal(Page::Courses, course) = Action::LookupOK then
+                            Rec."Course Name" := course."Course Name";
+                        Rec."School Name" := course.School;
+                        Rec."Department Name" := course.Department;
+
+                    end;
                 }
                 field("Department Name"; Rec."Department Name")
                 {
@@ -85,11 +125,11 @@ page 50149 "Session Card"
                     Image = Customer;
                     ToolTip = 'Opens Sesssion Card';
 
-
                     trigger OnAction()
                     begin
-
+                        rec.Report := true
                     end;
+
                 }
 
                 action(CancelApp)
@@ -108,10 +148,7 @@ page 50149 "Session Card"
                     var
                         sess: Record "Session Card";
                     begin
-                        // IF CheckSessionCardApprovalsWorkFlowEnable(Rec) THEN
-                        //     OnReportForSession(Rec);
                         SessReg(Rec);
-
                     end;
                 }
 

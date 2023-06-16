@@ -3,6 +3,7 @@ codeunit 50131 "Approval Mgt"
 
 
     //check weather student workflows is enabled
+    //student application form
     procedure CheckStudentApplicationFormApprovalsWorkFlowEnable(var Applicant: Record "Student Application Form"): Boolean
     begin
         IF NOT IsStudentApplicationFormApprovalsWorkFlowEnable(Applicant) then
@@ -12,8 +13,6 @@ codeunit 50131 "Approval Mgt"
 
     procedure IsStudentApplicationFormApprovalsWorkFlowEnable(var Applicant: Record "Student Application Form"): Boolean
     begin
-        // IF Applicant."Approval Status" <> Applicant."Approval Status"::Open then
-        //     exit(false);
         EXIT(WorkFlowManagement.CanExecuteWorkflow(Applicant, WorkFlowEventHandlingCust.RunWorkFlowOnSendStudentApplicationFormForApprovalCode()));
     end;
 
@@ -28,22 +27,48 @@ codeunit 50131 "Approval Mgt"
     begin
 
     end;
-    //  [IntegrationEvent(false, false)]
-    // procedure OnReleaseStudentApplicationForm(Var Applicant: Record "Student Application Form")
-    // begin
+    //student invoice
+    procedure CheckStudentInvoiceApprovalsWorkFlowEnable(var Applicant1: Record "Student Invoice"): Boolean
+    begin
+        IF NOT IsStudentInvoiceApprovalsWorkFlowEnable(Applicant1) then
+            Error(NoWorkFlowEnabledErr);
+        exit(true);
+    end;
 
-    // end;
+    procedure IsStudentInvoiceApprovalsWorkFlowEnable(var Applicant1: Record "Student Invoice"): Boolean
+    begin
+        EXIT(WorkFlowManagement.CanExecuteWorkflow(Applicant1, WorkFlowEventHandlingCust.RunWorkFlowOnSendStudentInvoiceForApprovalCode()));
+    end;
+
+    [IntegrationEvent(false, false)]
+    procedure OnSendStudentInvoiceForApproval(Var Applicant1: Record "Student Invoice")
+    begin
+
+    end;
+
+    [IntegrationEvent(false, false)]
+    procedure OnCancelStudentInvoiceForApproval(var Applicant1: Record "Student Invoice")
+    begin
+
+    end;
+
 
     [EventSubscriber(ObjectType::Codeunit::Codeunit, 1535, 'OnPopulateApprovalEntryArgument', '', true, true)]
     local procedure OnPopulateApprovalEntryArgument(var recref: RecordRef; var ApprovalEntryArgument: Record "Approval Entry")
     var
         Applicant: Record "Student Application Form";
+        Applicant1: Record "Student Invoice";
     begin
         case recref.Number of
             DATABASE::"Student Application Form":
                 begin
                     recref.SetTable(Applicant);
                     ApprovalEntryArgument."Document No." := Applicant."Application No.";
+                end;
+            DATABASE::"Student Invoice":
+                begin
+                    recref.SetTable(Applicant1);
+                    ApprovalEntryArgument."Document No." := Applicant1."Invoice Code"
                 end;
         end;
     end;
@@ -54,6 +79,7 @@ codeunit 50131 "Approval Mgt"
     local procedure OnSetStatusToPendingApproval(RecRef: RecordRef; var Variant: Variant; var IsHandled: Boolean)
     var
         Applicant: Record "Student Application Form";
+        Applicant1: Record "Student Invoice";
     begin
         case RecRef.number of
             DATABASE::"Student Application Form":
@@ -62,6 +88,14 @@ codeunit 50131 "Approval Mgt"
                     Applicant."Approval Status" := Applicant."Approval Status"::"Pending Approval";
                     Variant := Applicant;
                     Applicant.Modify(true);
+                    IsHandled := true;
+                end;
+            DATABASE::"Student Invoice":
+                begin
+                    RecRef.SetTable(Applicant1);
+                    Applicant1."Approval Status" := Applicant1."Approval Status"::"Pending Approval";
+                    Variant := Applicant1;
+                    Applicant1.Modify(true);
                     IsHandled := true;
                 end;
         end;

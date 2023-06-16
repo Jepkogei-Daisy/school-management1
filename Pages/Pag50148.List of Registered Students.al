@@ -5,6 +5,7 @@ page 50148 "List of Registered Students"
     PromotedActionCategories = 'New,Process,Report,New Document,Approve,Request Approval,Prices & Discounts,Navigate,Customer';
     RefreshOnActivate = true;
     SourceTable = Customer;
+    SourceTableView = where("Customer Type" = filter(Students));
     UsageCategory = Lists;
     ApplicationArea = All;
     AboutTitle = 'About customer details';

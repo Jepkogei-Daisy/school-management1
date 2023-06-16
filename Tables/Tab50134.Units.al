@@ -29,26 +29,42 @@ table 50134 "Units"
 
 
         }
-        field(3; "School"; Text[50])
+        // field(3; "School"; Text[50])
+        // {
+        //     DataClassification = CustomerContent;
+        //     Caption = 'School';
+        // }
+        // field(4; "Department"; Text[50])
+        // {
+        //     DataClassification = CustomerContent;
+        //     Caption = 'Department';
+        // }
+        // field(5; "Course Code"; Code[20])
+        // {
+        //     DataClassification = CustomerContent;
+        //     // TableRelation = Courses;
+        //     Caption = 'Course Code';
+        // }
+        // field(6; "Course Name"; Text[50])
+        // {
+        //     DataClassification = CustomerContent;
+        //     // TableRelation = Courses;
+        //     Caption = 'Course Name';
+        // }
+        field(7; "No. Series"; Code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'School';
         }
-        field(4; "Department"; Text[50])
-        {
-            DataClassification = CustomerContent;
-            Caption = 'Department';
-        }
-        field(5; "Course Code"; Code[20])
-        {
-            DataClassification = CustomerContent;
-            TableRelation = Courses;
-            Caption = 'Course Code';
-        }
-        field(6; "No. Series"; Code[20])
-        {
-            DataClassification = CustomerContent;
-        }
+        // field(8; "Academic Year"; code[20])
+        // {
+        //     DataClassification = CustomerContent;
+        //     Caption = 'Academic Year';
+        // }
+        // field(9; "Semester Name"; Code[20])
+        // {
+        //     DataClassification = CustomerContent;
+        //     Caption = 'Semester';
+        // }
     }
 
     keys

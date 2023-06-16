@@ -22,6 +22,7 @@ page 50138 Courses
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Course Name field.';
+
                 }
                 field(Level; Rec.Level)
                 {

@@ -9,7 +9,7 @@ page 50151 "Fee Structure"
     {
         area(Content)
         {
-            group(GroupName)
+            group(FeeStructure)
             {
                 field("Fee Structure Code"; Rec."Fee Structure Code")
                 {
@@ -46,31 +46,30 @@ page 50151 "Fee Structure"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Bank Account Type field.';
                 }
+                field("Payment Type"; Rec."Payment Type")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Payment Type field.';
+                }
+
                 field(Amount; Rec.Amount)
+
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Amount field.';
                 }
+                field("Bal.Account Type"; Rec."Bal.Account Type")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the type of balancing account in the field.';
+                }
+                field("Balancing Acc. No."; Rec."Balancing Acc. No.")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the balancing account number of the field';
+                }
+
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                ApplicationArea = All;
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-
-    var
-        myInt: Integer;
 }

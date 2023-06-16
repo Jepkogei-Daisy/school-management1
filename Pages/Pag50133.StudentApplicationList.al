@@ -30,11 +30,11 @@ page 50133 "StudentApplicationList"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Gender field.';
                 }
-                field(Age; Rec.Age)
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Age field.';
-                }
+                // field(Age; Rec.Age)
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the value of the Age field.';
+                // }
                 field("Student Category"; Rec."Student Category")
                 {
                     ApplicationArea = All;

@@ -1,24 +1,32 @@
-table 50141 "Units Registration"
+table 50141 "Units Lines"
 {
-    Caption = 'Units Registration';
+    Caption = 'Units Lines';
     DataClassification = ToBeClassified;
-    
+
     fields
     {
-        field(1; "Unit Code"; Text[50])
+        field(1; "Entry No."; code[50])
+        {
+            Caption = 'Entry No.';
+            DataClassification = CustomerContent;
+        }
+        field(2; "Unit Code"; code[20])
         {
             Caption = 'Unit Code';
             DataClassification = CustomerContent;
         }
-        field(2; "Unit Name"; Text[50])
+        field(3; "Unit Name"; code[50])
         {
             Caption = 'Unit Name';
             DataClassification = CustomerContent;
         }
+
+
+
     }
     keys
     {
-        key(PK; "Unit Code")
+        key(PK; "Entry No.")
         {
             Clustered = true;
         }

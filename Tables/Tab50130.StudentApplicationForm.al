@@ -69,7 +69,9 @@ table 50130 "Student Application Form"
         field(6; "E-Mail"; Text[50])
         {
             Caption = 'E-Mail';
+            // EnableEmailVerify = true;
             DataClassification = CustomerContent;
+
         }
         field(7; "Telephone"; Text[30])
         {
@@ -163,6 +165,7 @@ table 50130 "Student Application Form"
         field(20; "County"; Text[20])
         {
             Caption = 'County';
+            TableRelation = "Country/Region";
             DataClassification = CustomerContent;
         }
         field(23; "Approval Status"; Enum "ApprovalStatus")

@@ -27,10 +27,12 @@ table 50149 "Session Card"
         {
             Caption = 'Student No.';
             DataClassification = CustomerContent;
+            TableRelation = Customer where("Customer Type" = filter(students));
         }
         field(3; "Full Name"; Text[150])
         {
             Caption = 'Student Name';
+            Editable = false;
             DataClassification = CustomerContent;
         }
         field(4; "Academic Code"; Code[20])
@@ -41,6 +43,7 @@ table 50149 "Session Card"
         field(5; "Academic Year"; code[20])
         {
             DataClassification = CustomerContent;
+            TableRelation = "Academic Years";
             Caption = 'Academic Year';
         }
         field(6; "Semester code"; Code[10])
@@ -51,7 +54,13 @@ table 50149 "Session Card"
         field(7; "Semester Name"; Code[20])
         {
             DataClassification = CustomerContent;
+            TableRelation = Semesters;
             Caption = 'Semester Name';
+        }
+        field(16; "Course Name"; Text[50])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Course Name';
         }
         field(8; "School Code"; Code[20])
         {
@@ -61,6 +70,7 @@ table 50149 "Session Card"
         field(9; "School Name"; Text[50])
         {
             Caption = 'School Name';
+            Editable = false;
             DataClassification = CustomerContent;
         }
         field(10; "Department Code"; Code[20])
@@ -71,6 +81,7 @@ table 50149 "Session Card"
         field(11; "Department Name"; Text[50])
         {
             DataClassification = CustomerContent;
+            Editable = false;
             Caption = 'Department Name';
         }
         field(12; "Student category"; Enum "Student Category")
@@ -105,6 +116,12 @@ table 50149 "Session Card"
             Clustered = true;
         }
     }
+    //fieldgroups
+    //{
+    //fieldgroup(DropDown; "Full Name") { }
+    //fieldgroup(Brick; "Full Name") { }
+    //}
+
     var
 
         StudentMgntSetup: Record "StudentMgntSetup";

@@ -24,9 +24,7 @@ table 50137 "Semesters"
         field(2; "Semester Name"; Code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'Semester Name';
-
-
+            Caption = 'Semester';
         }
         field(3; "No. Series"; Code[20])
         {

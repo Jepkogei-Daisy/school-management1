@@ -166,7 +166,7 @@ page 50130 "Student Application Form"
         {
             group(Approvals)
             {
-                Caption = 'Approvals';
+                Caption = 'Actions';
                 action(SendApp)
                 {
 

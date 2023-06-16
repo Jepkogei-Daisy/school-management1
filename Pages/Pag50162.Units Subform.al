@@ -1,15 +1,15 @@
-page 50141 "Units Registration"
+page 50162 "Units Subform"
 {
-    Caption = 'Units Registration';
-    PageType = List;
-    SourceTable = "Units Registration";
-    UsageCategory = Lists;
+    PageType = ListPart;
+    ApplicationArea = All;
+    UsageCategory = Administration;
+    SourceTable = "Units Lines";
 
     layout
     {
-        area(content)
+        area(Content)
         {
-            repeater(General)
+            repeater(Lines)
             {
                 field("Unit Code"; Rec."Unit Code")
                 {

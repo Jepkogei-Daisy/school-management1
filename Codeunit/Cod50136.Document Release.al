@@ -3,14 +3,15 @@ codeunit 50136 "Document Release"
     procedure CreateStudent(var StudentReg: Record "Student Application Form")
     var
         stud: Record Customer;
+        Student: Record StudentMgntSetup;
     begin
         stud."Customer Type" := stud."Customer Type"::Students;
         stud.Name := StudentReg."Full Name";
         stud."No." := StudentReg."Application No.";
-        // stud."Gen. Bus. Posting Group" :=Student."Gen.Bus Posting Group";
-        // stud."VAT Bus. Posting Group" :=Student."VAT.Bus Posting Group";
-        // stud."Customer Posting Group" :=Student. "Customer Posting Group";
-        // stud.TransferFields(StudentReg);
+        stud."Gen. Bus. Posting Group" := Student."Gen.Bus Posting Group";
+        stud."VAT Bus. Posting Group" := Student."VAT.Bus Posting Group";
+        stud."Customer Posting Group" := Student."Customer Posting Group";
+        //stud.TransferFields(StudentReg);
         Stud.Insert(true);
     end;
 
@@ -39,6 +40,19 @@ codeunit 50136 "Document Release"
 
     end;
 
-
+    // local procedure InsertStudentsEntry(var StudentsList: Record  "Student Application Form")
+    //     var
+    //         "StudentApplicationList": Record "Student Application Form";
+    //         EntryNo: Integer;
+    //     begin
+    //         if  "StudentApplicationList".FindLast() then
+    //             EntryNo :=  "StudentApplicationList"."Entry No." + 1
+    //         else
+    //             EntryNo := 1;
+    //         StudentApplicationList.Init();
+    //         StudentApplicationList."Entry No." := EntryNo;
+    //         StudentApplicationList.Insert();
+    //     end;
 }
+
 

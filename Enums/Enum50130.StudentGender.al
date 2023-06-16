@@ -1,9 +1,9 @@
 enum 50130 "StudentGender"
 {
     Extensible = true;
-    value(0; "Select")
+    value(0; " ")
     {
-        Caption = 'Select';
+        Caption = ' ';
     }
     value(1; "Male")
     {
