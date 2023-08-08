@@ -10,7 +10,7 @@ page 50134 "Units"
     {
         area(Content)
         {
-            repeater(GroupName)
+            repeater(General)
             {
                 field("Unit Code"; Rec."Unit Code")
                 {
@@ -19,43 +19,14 @@ page 50134 "Units"
                 field("Unit Name"; Rec."Unit Name")
                 {
                     ApplicationArea = All;
-                    // trigger OnLookup(var Text: Text): Boolean
-                    // var
-                    //     units1: Record "Unit Matrix";
-                    // begin
-                    //     if Page.RunModal(Page::UnitMatrix, units1) = Action::LookupOK then
-                    //         Rec."school" := units1."School Name";
-                    //     Rec."Course Name" := units1."Course Name";
-                    //     Rec."Academic Year" := units1."Academic Year";
-                    //     Rec."Semester Name" := units1."Semester Name";
-                    //     Rec.Department := units1."Department Name";
-                    //     Rec."Unit Name" := units1."Unit Name";
-
-                    // end;
-
-
                 }
-                // field(School; Rec.School)
-                // {
-                //     ApplicationArea = All;
-                // }
-                // field(Department; Rec.Department)
-                // {
-                //     ApplicationArea = All;
-                // }
-                // field("Course Name"; Rec."Course Name")
-                // {
-                //     ApplicationArea = All;
-                // }
+                field("Core Unit"; Rec."Core Unit")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Core Unit field.';
+                }
 
-                // field("Academic Year"; Rec."Academic Year")
-                // {
-                //     ApplicationArea = All;
-                // }
-                // field("Semester Name"; Rec."Semester Name")
-                // {
-                //     ApplicationArea = All;
-                // }
+
             }
         }
 

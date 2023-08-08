@@ -11,6 +11,11 @@ page 50162 "Units Subform"
         {
             repeater(Lines)
             {
+                field("Entry No."; Rec."Entry No.")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the entry number';
+                }
                 field("Unit Code"; Rec."Unit Code")
                 {
                     ApplicationArea = All;
@@ -21,6 +26,12 @@ page 50162 "Units Subform"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Unit Name field.';
                 }
+                field("Core Unit"; Rec."Core Unit")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Core Unit field.';
+                }
+
             }
         }
     }

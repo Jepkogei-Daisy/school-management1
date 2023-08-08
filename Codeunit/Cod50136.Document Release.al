@@ -5,13 +5,14 @@ codeunit 50136 "Document Release"
         stud: Record Customer;
         Student: Record StudentMgntSetup;
     begin
+        Student.Get();
         stud."Customer Type" := stud."Customer Type"::Students;
         stud.Name := StudentReg."Full Name";
-        stud."No." := StudentReg."Application No.";
+        //stud."No." := StudentReg."Application No.";
         stud."Gen. Bus. Posting Group" := Student."Gen.Bus Posting Group";
         stud."VAT Bus. Posting Group" := Student."VAT.Bus Posting Group";
         stud."Customer Posting Group" := Student."Customer Posting Group";
-        //stud.TransferFields(StudentReg);
+        stud.TransferFields(StudentReg);
         Stud.Insert(true);
     end;
 
@@ -25,6 +26,9 @@ codeunit 50136 "Document Release"
             StudentExist."Approval Status" := StudentExist."Approval Status"::"Approved";
             StudentExist.Modify();
             CreateStudent(StudentExist);
+            Message('Student Application sucessfull');
+            EmailVerification.EmailAdmissionLetter(StudentReg);
+            Message('Welcome!');
         end;
 
 
@@ -53,6 +57,9 @@ codeunit 50136 "Document Release"
     //         StudentApplicationList."Entry No." := EntryNo;
     //         StudentApplicationList.Insert();
     //     end;
+
+    var
+        EmailVerification: Codeunit "Email Verification";
 }
 
 

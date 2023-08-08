@@ -22,6 +22,7 @@
   ],
   "showMyCode": true,
   "runtime": "8.1",
+  "target": "OnPrem",
   "features": [
     "NoImplicitWith"
   ]

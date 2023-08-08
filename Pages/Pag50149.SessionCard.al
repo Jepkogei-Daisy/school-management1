@@ -26,6 +26,11 @@ page 50149 "Session Card"
                         if page.RunModal(Page::"StudentApplicationList", Session) = Action::LookupOK then
                             Rec."Application No." := Session."Application No.";
                         Rec."Full Name" := Session."Full Name";
+                        Rec."Course Name" := Session."Course Name";
+                        Rec."School Name" := Session.School;
+                        Rec."Department Name" := Session.Department;
+                        Rec."Student category" := Session."Student Category";
+
                     end;
                 }
                 field("Full Name"; Rec."Full Name")
@@ -63,17 +68,6 @@ page 50149 "Session Card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the Name of the course in the field';
-                    trigger OnLookup(var Text: Text): Boolean
-                    var
-                        course: Record Courses;
-                    begin
-                        course.Reset;
-                        if Page.RunModal(Page::Courses, course) = Action::LookupOK then
-                            Rec."Course Name" := course."Course Name";
-                        Rec."School Name" := course.School;
-                        Rec."Department Name" := course.Department;
-
-                    end;
                 }
                 field("Department Name"; Rec."Department Name")
                 {

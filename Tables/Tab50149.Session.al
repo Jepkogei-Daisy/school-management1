@@ -60,6 +60,7 @@ table 50149 "Session Card"
         field(16; "Course Name"; Text[50])
         {
             DataClassification = CustomerContent;
+            Editable = false;
             Caption = 'Course Name';
         }
         field(8; "School Code"; Code[20])
@@ -87,6 +88,7 @@ table 50149 "Session Card"
         field(12; "Student category"; Enum "Student Category")
         {
             DataClassification = CustomerContent;
+            Editable = false;
             Caption = 'Student Category';
         }
         field(13; "Approval Status"; Enum "ApprovalStatus")
@@ -116,11 +118,6 @@ table 50149 "Session Card"
             Clustered = true;
         }
     }
-    //fieldgroups
-    //{
-    //fieldgroup(DropDown; "Full Name") { }
-    //fieldgroup(Brick; "Full Name") { }
-    //}
 
     var
 

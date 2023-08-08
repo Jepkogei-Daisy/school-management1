@@ -66,10 +66,11 @@ table 50153 "Student Invoice"
             DataClassification = CustomerContent;
             Caption = 'Invoice Date';
         }
-        field(8; "Amount"; Decimal)
+        field(59; "Amount"; Decimal)
         {
-            DataClassification = CustomerContent;
-            Caption = 'Amount';
+            Caption = 'Invoiced Amount';
+            FieldClass = FlowField;
+            CalcFormula = sum("Invoice Lines".Amount where("Entry No." = field("Invoice Code")));
         }
         field(9; "Posting Date"; Date)
         {

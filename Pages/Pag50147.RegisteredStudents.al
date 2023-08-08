@@ -2,7 +2,7 @@ page 50147 "Registered Students"
 {
     Caption = 'Registered Students';
     PageType = Card;
-    CardPageID = "Customer Card";
+
     PromotedActionCategories = 'New,Process,Report,New Document,Approve,Request Approval,Prices & Discounts,Navigate,Customer';
     RefreshOnActivate = true;
     SourceTable = Customer;
@@ -64,7 +64,7 @@ page 50147 "Registered Students"
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the payment amount that the customer owes for completed sales. This value is also known as the customer''s balance.';
-                    Caption = 'Fee Balance';
+
                 }
             }
             group("Address & Contact")

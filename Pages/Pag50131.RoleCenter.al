@@ -15,6 +15,13 @@ page 50131 "Student Role Center"
                     ApplicationArea = Basic, suite;
                 }
             }
+            group(grouRole)
+            {
+                part(cue2; Cues)
+                {
+                    ApplicationArea = All;
+                }
+            }
         }
 
 
@@ -38,6 +45,12 @@ page 50131 "Student Role Center"
                     RunObject = page "courses";
                     ApplicationArea = Basic, Suite;
                     Caption = 'Courses';
+                }
+                action(registered)
+                {
+                    RunObject = page "List of Registered Students";
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'List of Registered Students';
                 }
 
             }
@@ -117,8 +130,26 @@ page 50131 "Student Role Center"
                     ApplicationArea = Basic, Suite;
                     Caption = 'Fee Structure Report';
                 }
-            }
+                action(Admin3)
+                {
+                    RunObject = report "Application Letter";
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Admission Letter Report';
+                }
 
+            }
+            // group(Section4)
+            // {
+            //     Caption = 'Approvals';
+            //     action(Approvals)
+            //     {
+            //         RunObject = page Cues;
+            //         Image = Customer;
+            //         ApplicationArea = Basic, Suite;
+            //         Caption = 'Approved Status';
+            //     }
+
+            //}
         }
     }
 }

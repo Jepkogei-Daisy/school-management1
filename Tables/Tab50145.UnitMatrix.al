@@ -65,6 +65,11 @@ table 50145 "Unit Matrix"
             Caption = 'Department Name';
             DataClassification = CustomerContent;
         }
+        field(13; "Core Unit"; Boolean)
+        {
+            Caption = 'Core Unit';
+            DataClassification = CustomerContent;
+        }
     }
     keys
     {

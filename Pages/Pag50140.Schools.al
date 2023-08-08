@@ -21,9 +21,6 @@ page 50140 Schools
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the School Name field.';
-                    
-
-
                 }
             }
         }

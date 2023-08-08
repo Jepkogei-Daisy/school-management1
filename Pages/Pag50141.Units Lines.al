@@ -10,7 +10,7 @@ page 50141 "Units Lines"
     {
         area(content)
         {
-            group(General)
+            group(Lines)
             {
                 field("Entry No."; Rec."Entry No.")
                 {
@@ -27,6 +27,12 @@ page 50141 "Units Lines"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Unit Name field.';
                 }
+                field("Core Unit"; Rec."Core Unit")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Core Unit field.';
+                }
+
             }
         }
     }

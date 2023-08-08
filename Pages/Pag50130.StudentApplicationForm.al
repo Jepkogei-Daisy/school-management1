@@ -183,6 +183,7 @@ page 50130 "Student Application Form"
                     begin
                         IF ApprovalMgt.CheckStudentApplicationFormApprovalsWorkFlowEnable(Rec) THEN
                             ApprovalMgt.OnSendStudentApplicationFormForApproval(Rec);
+
                     end;
                 }
                 action(cancelApp)
@@ -199,25 +200,25 @@ page 50130 "Student Application Form"
                     trigger OnAction()
                     begin
                         ApprovalMgt.OnCancelStudentApplicationFormForApproval(Rec);
-
                     end;
                 }
-                action(Released)
+
+                action(Emails)
                 {
                     ApplicationArea = All;
-                    Caption = 'Release';
+                    Caption = 'Send Email for Verification';
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
-                    Image = Customer;
-                    ToolTip = 'Opens Student Application Form';
-
+                    ToolTip = 'Open student application form';
 
                     trigger OnAction()
+                    var
+                        myInt: Integer;
                     begin
-
-
+                        EmailVerification.EmailAdmissionLetter(Rec);
                     end;
+
                 }
             }
         }
@@ -243,6 +244,7 @@ page 50130 "Student Application Form"
         CanSendApprovalForFlow: Boolean;
         ApproveMagt: Codeunit "Approvals Mgmt.";
         DocumentRelease: Codeunit "Document Release";
+        EmailVerification: Codeunit "Email Verification";
 
 
 

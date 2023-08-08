@@ -23,7 +23,7 @@ table 50130 "Student Application Form"
             end;
 
         }
-        field(2; "First Name"; Text[50])
+        field(18; "First Name"; Text[50])
         {
             Caption = 'First Name';
             DataClassification = CustomerContent;
@@ -53,7 +53,7 @@ table 50130 "Student Application Form"
                 "Full Name" := "First Name" + ' ' + "Middle Name" + ' ' + Surname;
             end;
         }
-        field(5; "Full Name"; Text[150])
+        field(2; "Full Name"; Text[150])
         {
             Caption = 'Full Name';
             DataClassification = CustomerContent;
@@ -66,14 +66,14 @@ table 50130 "Student Application Form"
 
 
         }
-        field(6; "E-Mail"; Text[50])
+        field(102; "E-Mail"; Text[50])
         {
             Caption = 'E-Mail';
             // EnableEmailVerify = true;
             DataClassification = CustomerContent;
 
         }
-        field(7; "Telephone"; Text[30])
+        field(9; "Telephone"; Text[30])
         {
             Caption = 'Telephone';
             DataClassification = CustomerContent;
@@ -151,29 +151,29 @@ table 50130 "Student Application Form"
             DataClassification = CustomerContent;
 
         }
-        field(18; "Postal Address"; Code[20])
+        field(5; "Postal Address"; Code[20])
         {
             Caption = 'Postal Address';
             DataClassification = CustomerContent;
 
         }
-        field(19; "City"; Text[30])
+        field(7; "City"; Text[30])
         {
             Caption = 'City';
             DataClassification = CustomerContent;
         }
-        field(20; "County"; Text[20])
+        field(92; "County"; Text[20])
         {
             Caption = 'County';
             TableRelation = "Country/Region";
             DataClassification = CustomerContent;
         }
-        field(23; "Approval Status"; Enum "ApprovalStatus")
+        field(50; "Approval Status"; Enum "ApprovalStatus")
         {
             DataClassification = CustomerContent;
             Caption = 'Approval Status';
         }
-        field(24; "Student Category"; Enum "Student Category")
+        field(3009; "Student Category"; Enum "Student Category")
         {
             DataClassification = CustomerContent;
             Caption = 'Student Category';

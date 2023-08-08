@@ -68,5 +68,37 @@ page 50161 "Units Registration Form"
             }
         }
     }
+    actions
+    {
+        area(navigation)
+        {
+            group(SessionApprovals)
+            {
+                Caption = 'Registration';
+                action(SendApp)
+                {
+
+                    ApplicationArea = All;
+                    Caption = 'Register units';
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    Image = Customer;
+                    ToolTip = 'Opens Unit Registration Form';
+
+                    trigger OnAction()
+                    begin
+                        PopulateUnits.SuggestLines();
+                    end;
+
+                }
+
+            }
+
+
+        }
+    }
+    var
+        PopulateUnits: Codeunit "Populate Units";
 
 }

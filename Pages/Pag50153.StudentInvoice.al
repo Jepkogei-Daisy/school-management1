@@ -212,4 +212,5 @@ page 50153 "Student Invoice"
         CanSendApprovalForFlow: Boolean;
         ApproveMagt: Codeunit "Approvals Mgmt.";
         FinanceManagement: Codeunit "Finance Management";
+
 }

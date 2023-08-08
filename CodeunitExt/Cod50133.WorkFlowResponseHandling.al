@@ -8,6 +8,8 @@ codeunit 50133 "WorkFlowResponseHandling"
         DocumentRelease: Codeunit "Document Release";
         Applicant1: Record "Student Invoice";
         FinanceManagement: Codeunit "Finance Management";
+        Applicant2: Record "Student Receipt";
+        PaymentManagement: Codeunit "Payment Management";
 
         Varvariant: variant;
     begin
@@ -31,6 +33,12 @@ codeunit 50133 "WorkFlowResponseHandling"
                     Handled := true;
                     FinanceManagement.PostStudentInvoice(Varvariant);
                 end;
+            Database::"Student Receipt":
+                begin
+                    Applicant2.SetView(RecRef.GetView());
+                    Handled := true;
+                    PaymentManagement.PostStudentReceipt(Varvariant);
+                end;
         end;
     end;
 
@@ -42,6 +50,8 @@ codeunit 50133 "WorkFlowResponseHandling"
         documentRelease: Codeunit "Document Release";
         Applicant1: Record "Student Invoice";
         FinanceManagement: Codeunit "Finance Management";
+        Applicant2: Record "Student Receipt";
+        PaymentManagement: Codeunit "Payment Management";
         Varvariant: variant;
 
 
@@ -60,6 +70,12 @@ codeunit 50133 "WorkFlowResponseHandling"
                     Handled := true;
                     FinanceManagement.PostStudentInvoice(Varvariant);
 
+                end;
+            Database::"Student Receipt":
+                begin
+                    Applicant2.SetView(RecRef.GetView());
+                    Handled := true;
+                    PaymentManagement.PostStudentReceipt(Varvariant);
                 end;
         end;
     end;
@@ -116,6 +132,31 @@ codeunit 50133 "WorkFlowResponseHandling"
                 WorkFlowEventHandlingCust.RunWorkFlowOnSendStudentInvoiceForApprovalCode);
 
         end;
+        //Student receipt
+        case ResponseFunctionName of
+        // WorkFlowResponseHandling.SetStatusToPendingApprovalCode:
+        //     WorkFlowResponseHandling.AddResponsePredecessor(WorkFlowResponseHandling.SetStatusToPendingApprovalCode,
+        //     WorkFlowEventHandlingCust.RunWorkFlowOnSendStudentReceiptForApprovalCode);
+
+        // WorkFlowResponseHandling.SendApprovalRequestforApprovalCode:
+        //     WorkFlowResponseHandling.AddResponsePredecessor(WorkFlowResponseHandling.SendApprovalRequestForApprovalCode,
+        //     WorkFlowEventHandlingCust.RunWorkFlowOnSendStudentReceiptForApprovalCode);
+
+        // WorkFlowResponseHandling.CancelAllApprovalRequestsCode:
+        //     WorkFlowResponseHandling.AddResponsePredecessor(WorkFlowResponseHandling.CancelAllApprovalRequestsCode,
+        //     WorkFlowEventHandlingCust.RunWorkFlowOnCancelStudentReceiptApprovalCode);
+
+        // WorkFlowResponseHandling.OpenDocumentCode:
+        //     WorkFlowResponseHandling.AddResponsePredecessor(WorkFlowResponseHandling.OpenDocumentCode,
+        //     WorkFlowEventHandlingCust.RunWorkFlowOnRejectedStudentRApprovalCode);
+
+        // WorkFlowResponseHandling.CreateApprovalRequestsCode:
+        //     WorkFlowResponseHandling.AddResponsePredecessor(WorkFlowResponseHandling.CreateApprovalRequestsCode,
+        //     WorkFlowEventHandlingCust.RunWorkFlowOnSendStudentReceiptForApprovalCode);
+
+        end;
+
+
     end;
 
 }

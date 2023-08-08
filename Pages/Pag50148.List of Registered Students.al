@@ -2,9 +2,11 @@ page 50148 "List of Registered Students"
 {
     Caption = 'List of Registered Students';
     PageType = list;
+    CardPageID = "Customer Card";
     PromotedActionCategories = 'New,Process,Report,New Document,Approve,Request Approval,Prices & Discounts,Navigate,Customer';
     RefreshOnActivate = true;
     SourceTable = Customer;
+
     SourceTableView = where("Customer Type" = filter(Students));
     UsageCategory = Lists;
     ApplicationArea = All;

@@ -31,17 +31,6 @@ page 50145 UnitMatrix
                     ApplicationArea = All;
                     Editable = false;
                     ToolTip = 'Specifies the value of the Unit Name field.';
-                    // trigger OnLookup(var Text: Text): Boolean
-                    // var
-                    //     Unit: Record Units;
-                    // begin
-                    //     if Page.RunModal(Page::Units, Unit) = Action::LookupOK then
-                    //         Rec."Unit Name" := Unit."Unit Name";
-                    //     Rec."School Name" := Unit."School";
-                    //     Rec."Department Name" := Unit."Department";
-                    //     Rec."Course Code" := Unit."Course Code";
-
-                    // end;
 
                 }
                 field("Course Name"; Rec."Course Name")
@@ -95,6 +84,12 @@ page 50145 UnitMatrix
                     Editable = false;
                     ToolTip = 'Specifies the value of the School Name field.';
                 }
+                field("Core Unit"; Rec."Core Unit")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Core Unit field.';
+                }
+
             }
         }
     }
