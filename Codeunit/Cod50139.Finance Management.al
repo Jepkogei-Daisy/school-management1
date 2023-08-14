@@ -13,6 +13,8 @@ codeunit 50139 "Finance Management"
         Invoicelns1: Label '%1 has already been posted!';
         Invoicelns2: Label 'Are you sure you want to post %1';
         Invoicelns3: Label 'Invoice has not been approved!Kindly approve before posting';
+
+        mm: Code[100];
     begin
         with Inv do begin
             if not Confirm(Invoicelns2, false, "Invoice Code") then
@@ -55,6 +57,8 @@ codeunit 50139 "Finance Management"
                     GeneralJournalLine.Amount := InvoiceLines.Amount;
                     GeneralJournalLine.Description := StrSubstNo('%1 for invoice reference No. %2', InvoiceLines."Entry No.");
                     Message(Format(Amount));
+                    mm := StudentFeeStructure."Balancing Acc. No.";
+                    Message(Format(mm));
                     //dedit
                     GeneralJournalLine."Bal. Account Type" := GeneralJournalLine."Bal. Account Type"::Customer;
                     GeneralJournalLine."Bal. Account No." := "Application No.";

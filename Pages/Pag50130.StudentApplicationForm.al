@@ -98,7 +98,7 @@ page 50130 "Student Application Form"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the city in the city field.';
                 }
-                field(County; Rec.County)
+                field(Country; Rec.Country)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the county in the county field.';

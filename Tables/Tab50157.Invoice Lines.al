@@ -30,7 +30,7 @@ table 50157 "Invoice Lines"
         field(3; "Description"; code[50])
         {
             Caption = 'Description';
-            TableRelation = "Fee Structure";
+            // TableRelation = "Fee Structure";
             DataClassification = CustomerContent;
         }
         field(59; "Amount"; Decimal)

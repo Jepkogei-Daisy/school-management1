@@ -162,9 +162,9 @@ table 50130 "Student Application Form"
             Caption = 'City';
             DataClassification = CustomerContent;
         }
-        field(92; "County"; Text[20])
+        field(92; "Country"; Text[20])
         {
-            Caption = 'County';
+            Caption = 'Country';
             TableRelation = "Country/Region";
             DataClassification = CustomerContent;
         }
